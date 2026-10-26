@@ -464,7 +464,9 @@ def construir_mapa(features: list[dict], limite: dict, ocorrencias: pd.DataFrame
                        style_function=lambda _: {"color": "#667085", "weight": 0.4,
                                                  "fillColor": "#98a2b3", "fillOpacity": 0.10},
                        tooltip="Área sem cobertura pelos raios indicativos deste cenário").add_to(mapa)
-    folium.LayerControl(collapsed=False).add_to(mapa)
+    # Inicia recolhido para não cobrir a área do mapa; o usuário ainda pode
+    # abrir o controle quando quiser ativar ou ocultar camadas.
+    folium.LayerControl(collapsed=True, position="topright").add_to(mapa)
     return mapa
 
 
